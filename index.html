@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VueJS</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1 class="text-center">Battle game</h1>
+      <div class="row">
+
+        <div class="col-md-6">
+          <h2 class="text-center">YOU</h2>
+          <div class="heal-level gray">
+            <div class="heal-level text-center" :style="{width: youScore + '%'}">
+              <span>{{ youScore }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h2 class="text-center">MONSTER</h2>
+          <div class="heal-level gray">
+            <div class="heal-level text-center" :style="{width: monsterScore + '%'}">
+              <span>{{ monsterScore }}</span>
+            </div>
+          </div>          
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="panel panel-default text-center">
+          
+          <button 
+            class="btn btn-lg btn-primary" 
+            @click="startGame"
+            v-if="!isGameStarted"
+          >Start game</button>
+        
+          <template v-else="isGameStarted">
+            <button class="btn btn-lg btn-danger" @click="attack">Attack</button>
+            <button class="btn btn-lg btn-warning" @click="specialAttack">Special Attak</button>
+            <button class="btn btn-lg btn-info" @click="heal">Heal</button>
+            <button class="btn btn-lg btn-default" @click="giveUp">Give Up</button>
+          </template>
+        
+        </div>
+
+        <div class="panel panel-default" v-if="history.length">
+            <div  v-for="item in history"
+                  class="alert"
+                  :class="item.isPlayer ? 'alert-info' : 'alert-danger'"
+            >{{ item.text }}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

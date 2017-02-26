@@ -1,0 +1,17 @@
+.heal-level {
+    width: 100%;
+    height: 40px;
+    background-color: green;
+}
+
+.heal-level.gray {
+    background-color: #eee;
+}
+
+.button-area {
+    padding: 40px;
+}
+
+.panel {
+    padding: 20px;
+}
